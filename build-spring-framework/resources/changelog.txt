@@ -1,0 +1,102 @@
+SPRING FRAMEWORK CHANGELOG
+==========================
+http://www.springsource.org
+
+
+Changes in version 3.0.0.M2 (2009-02-25)
+----------------------------------------
+
+* revised expression parser API design
+* added SimpleThreadScope implementation
+* refined OSGi version constraints for "javax.annotation" and "junit.framework"
+* "systemProperties" bean is not considered a default match for type Properties anymore
+* SimpleAliasRegistry's "getAliases" method returns transitive aliases now
+* SimpleAliasRegistry detects resolved aliases that loop back to the original name
+* PropertyPlaceholderConfigurer does not modify Map in case of equal String keys
+* improved NoClassDefFoundError handling during constructor resolution
+* inner class names in Java source style ("java.lang.Thread.State") supported as well
+* pre-converted property values are preserved more eagerly for re-created beans
+* prototype beans receive independent collection/array even when based on single value
+* registered plain singletons will be fully matched according to their qualifiers
+* @Qualifier value matching takes chained aliases of target beans into account as well
+* ASM-based AnnotationMetadata fully resolves class arguments and enums into Java types
+* ProceedingJoinPoint resolves parameter names using ASM-based parameter name discovery
+* MethodInvocations and ProceedingJoinPoints always expose original method (not bridge)
+* bridge method resolution works with Hibernate-generated CGLIB proxies as well
+* generic collection type resolution respects upper bound (e.g. ? extends Number) as well
+* TypeUtils detects variations of ParameterizedType/GenericArrayType assignability as well
+* ReflectionUtils findMethod detects methods on "java.lang.Object" as well
+* UrlResource eagerly closes HTTP connections in case of "getInputStream()" failure
+* PathMatchingResourcePatternResolver avoids NPE when initialized with null ClassLoader
+* all "taskExecutor" bean properties now accept any "java.util.concurrent.Executor"
+* added "Future submit(Runnable)" and "Future submit(Callable)" to AsyncTaskExecutor
+* SimpleAsyncTaskExecutor supports a custom "java.util.concurrent.ThreadFactory"
+* SchedulingTaskExecutor interface extends AsyncTaskExecutor now
+* added ThreadPoolExecutorFactoryBean (exposing the native ExecutorService interface)
+* added ExecutorServiceAdapter class as a standard wrapper for a Spring TaskExecutor
+* reduced backport-concurrent support to TaskExecutor adapters
+* added @Async annotation and AsyncAnnotationAdvisor (namespace support coming in M3)
+* EJB 3.1's @Asynchronous annotation gets detected and supported by default as well
+* ApplicationListener beans get obtained on demand, supporting non-singletons as well
+* ApplicationListeners will be called in the order according to the Ordered contract
+* generified ApplicationListener interface, narrowing the event type to be received
+* introduced SmartApplicationListener interface for supported event/source types
+* generified Transaction/Hibernate/Jdo/JpaCallback with generic "doInXxx" return type
+* HibernateOperations uses generic parameter/return types where possible
+* JdoOperations uses generic parameter/return types where possible (following JDO 2.1)
+* removed "flush" operation from JdoDialect (fully relying on JDO 2.0+ compliance now)
+* added JDO 2.1 compliant StandardPersistenceManagerProxy/SpringPersistenceManagerProxy
+* Spring-created EntityManagers support JPA 2.0 draft API ("unwrap", "getQueryBuilder")
+* Spring initiates JPA 2.0 query timeout with remaining Spring transaction timeout
+* added support for WebSphere's ResourceAdapter-managed messaging transactions
+* made SpringBeanAutowiringInterceptor callback signature compatible with WebSphere
+* WebSphereUowTransactionManager preserves original exception in case of rollback
+* added "flush()" method to TransactionStatus and TransactionSynchronization interfaces
+* test context manager automatically flushes transactions before rolling back
+* DefaultLobHandler uses explicit Blob/Clob access for reading when "wrapAsLob"=true
+* fixed JmsException/JmsUtils to fully avoid NPEs in case of cause messages being null
+* fixed MessageListenerAdapter's "getSubscriptionName()" to work without delegate as well
+* fixed HTTP invoker to support resolution of multi-level primitive array classes again
+* deprecated support for JMS 1.0.2 providers (JmsTemplate102 etc)
+* introduced top-level HTTP support package "org.springframework.http"
+* introduced RestTemplate facility in package "org.springframework.web.client"
+* introduced OXM support package (originating from Spring Web Services)
+* introduced OXM-based MarshallingMessageConverter for Spring JMS
+* introduced OXM-based MarshallingView for Spring MVC
+* refined @PathVariable handling in MVC handler methods
+* updated Spring Portlet MVC infrastructure and mocks for Portlet API 2.0
+* added resource and event methods to Portlet HandlerAdapter/HandlerInterceptor
+* added resolveException method for resource requests to HandlerExceptionResolver
+* introduced Resource/EventAwareController subinterfaces of Portlet Controller
+* introduced @Action/@Render/@Resource/@EventMapping annotations for Portlet MVC
+* added @RequestHeader support for Portlet MVC (based on Portlet request properties)
+* introduced @CookieValue annotation for Servlet and Portlet MVC handler methods
+* @RequestMapping type-level param constraints taken into account consistently
+* optional boolean parameters in MVC handler methods resolve to "false" if not present
+* "url" macro in "spring.ftl" performs standard Servlet URL encoding automatically
+
+
+Changes in version 3.0.0.M1 (2008-12-05)
+----------------------------------------
+
+* revised project layout and build system (module-based sources, bundle repository)
+* updated entire codebase for Java 5 code style (generics, varargs, StringBuilder)
+* updated to JUnit 4.5 and JRuby 1.1
+* removed WebLogic 8.1 and WebSphere 5.1 support
+* removed native TopLink API support (superseded by JPA)
+* removed Commons Attributes support (superseded by Java 5 annotations)
+* removed Jakarta JSTL support for JSP 1.2 (superseded by JSP 2.0)
+* removed outdated Struts 1.x Action delegation support
+* removed ContextLoaderServlet and Log4jConfigServlet
+* deprecated form controller hierarchy in favor of @MVC form object handling
+* deprecated JUnit 3.8 test class hierarchy in favor of test context framework
+* revised TaskExecutor interface to extend "java.util.concurrent.Executor" now
+* introduced Spring EL parser in org.springframework.expression package
+* introduced #{...} expression support in bean definitions
+* introduced @Value annotation for embedded expression support
+* introduced @PathVariable annotation for MVC handler methods
+* introduced ShallowEtagHeaderFilter
+* introduced AbstractAtomFeedView and AbstractRssFeedView
+* introduced default value support for @RequestParam
+* introduced @RequestHeader annotation for MVC handler methods
+* introduced "spring:url" and "spring:param" JSP tags

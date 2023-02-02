@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project><!-- /xml-data/build-dir/SPR-PUB7-JOB1 -->
+    
+    <property name="JAVAC_DEBUG" value="true"/>
+    
+    <property name="JAVAC_ENCODING" value="UTF-8"/>
+    
+    <property name="JAVAC_FAILONERROR" value="true"/>
+    
+    <property name="JAVAC_INCLUDEANTRUNTIME" value="true"/>
+    
+    <property name="JAVAC_INCLUDEJAVARUNTIME" value="true"/>
+    
+    <property name="JAVAC_VERBOSE" value="false"/>
+    
+    <property name="VERSION" value="3.0.0.M2"/>
+    
+    <property name="MY_BUILD" value="MyBuild"/>
+    
+    <property name="JAVAC_SOURCE" value="1.6"/>
+    
+    <property name="JAVAC_TARGET" value="1.5"/>
+</project>
